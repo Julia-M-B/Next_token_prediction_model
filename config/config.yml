@@ -1,0 +1,68 @@
+# seed for reproducible results
+seed: 42
+
+# data-related configs
+dir-path: "../aac_data"
+preprocessed-dir-path: "../aac_data_preprocessed"
+dialog-dir-path: "../aac_dialogi"
+preprocessed-dialog-path: "../aac_dialogi_preprocessed"
+speakleash-datasets:
+  - "plwiki"
+  - "1000_novels_corpus_CLARIN-PL"
+  - "open_subtitles_corpus"
+  - "wolne_lektury_corpus"
+  - "web_artykuły_inne_148"
+  - "web_artykuły_inne_147"
+  - "web_artykuły_inne_118"
+  - "web_artykuły_inne_150"
+  - "web_artykuły_inne_153"
+  - "web_artykuły_inne_1"
+huggingface-dataset-url: "hf://datasets/WiktorS/polish-news/full_data.csv"
+huggingface-dataset-name: "hugging_face_news"
+data-limit: 100000
+conversations-id-file: "../aac_dialogi/Conversations.xls"
+conversations-train-dir-name: "train"
+conversations-test-dir-name: "test"
+
+train-paths-file: "train_paths.txt"
+train-offsets-file: "train_offsets.npy"
+train-indices-file: "train_indices.npy"
+val-indices-file: "val_indices.npy"
+tune-indices-file: "tune_indices.npy"
+test-indices-file: "test_indices.npy"
+conversations-tune-paths-file: "conversations_tune_paths.txt"
+conversations-test-paths-file: "conversations_test_paths.txt"
+conversations-tune-offsets-file: "conversations_tune_offsets.npy"
+conversations-test-offsets-file: "conversations_test_offsets.npy"
+conversations-tune-indices-file: "conversations_tune_indices.npy"
+conversations-test-indices-file: "conversations_test_indices.npy"
+
+# dataset split ratios
+train-ratio: 0.9
+val-ratio: 0.05
+tune-ratio: 0.04
+
+# tokenizer parameters
+vocab-size:
+  - 4000
+  - 8000
+  - 12000
+  - 16000
+tokenizer-type: "unigram"
+tokenizer-prefix:
+  - "spm_4k"
+  - "spm_8k"
+  - "spm_12k"
+  - "spm_16k"
+tokenizer-ratio: 0.1
+
+# hyperparameters dataset ratio
+hyperparameters-ratio: 0.25
+
+n-workers: 4
+n-epochs: 30
+
+# fine-tuning configurations
+ft-epochs: 3
+ft-lr: 0.00005
+ft-batch-size: 8
